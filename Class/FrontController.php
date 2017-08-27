@@ -215,7 +215,6 @@ class FrontController extends Controller
 							$conffGitSplit[$v[0]] = $v[1];
 						}
 					}
-					print_r($conffGitSplit);
 					if ( !empty($conffGitSplit["url"]) )
 					{
 						$siteList[$key]["link"] = $conffGitSplit["url"];

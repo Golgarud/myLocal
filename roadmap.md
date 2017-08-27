@@ -17,12 +17,10 @@
 * [x] Readme enhancment.
 
 ## 0.6.0 *Gitlab suport*
-* [ ] GitLab repository detection.
-* [ ] Gitlab site link.
-* [ ] Github site link.
+* [x] GitLab repository detection.
 
 ## 0.7.0 *Frendly advanced settings*
-* [ ] Remove mmenu -> handmade menu.
+* [x] Remove mmenu -> handmade menu.
 * [ ] Fix config link in sub folder.
 * [ ] Config form enhancment.
 * [ ] Convert Json field into real form.
