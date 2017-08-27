@@ -238,6 +238,7 @@ class FrontController extends Controller
 							$conffGitSplit[$v[0]] = $v[1];
 						}
 					}
+					print_r($conffGitSplit);
 					if ( !empty($conffGitSplit["url"]) )
 					{
 						$siteList[$key]["link"] = $conffGitSplit["url"];
@@ -246,20 +247,25 @@ class FrontController extends Controller
 						if ( isset( explode( "github", $siteList[$key]["link"] )[1] ) )
 						{
 							$siteList[$key]["linkType"] = "github";
-							if ( isset( $isSSH[1] ) )
-							{
-								$siteList[$key]["link"] = $isSSH[1];
-								$siteList[$key]["link"] = str_replace( ':', '/', $siteList[$key]["link"] );
-								$siteList[$key]["link"] = "https://" . str_replace( '.git', '', $siteList[$key]["link"] );
-							}
 						}
 						elseif ( isset( explode( "bitbucket", $siteList[$key]["link"] )[1] ) )
 						{
 							$siteList[$key]["linkType"] = "bitbucket";
 						}
+						elseif ( isset( explode( "gitlab", $siteList[$key]["link"] )[1] ) )
+						{
+							$siteList[$key]["linkType"] = "gitlab";
+						}
 						else
 						{
 							$siteList[$key]["linkType"] = "git";
+						}
+
+						if ( isset( $isSSH[1] ) )
+						{
+							$siteList[$key]["link"] = $isSSH[1];
+							$siteList[$key]["link"] = str_replace( ':', '/', $siteList[$key]["link"] );
+							$siteList[$key]["link"] = "https://" . str_replace( '.git', '', $siteList[$key]["link"] );
 						}
 					}	
 				}
