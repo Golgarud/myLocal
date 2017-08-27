@@ -138,34 +138,11 @@ class FrontController extends Controller
 	public function getList( $repoScan = true, $allowParentLink = false )
 	{
 		$files = scandir(SCAN_DIR);
-		$realpath = str_replace(array('/', '\\'),'',explode( ":",realpath('.') )[0]);
 		$siteList = array();
 		foreach ($files as $key => $value) 
 		{
 			$this->cacheID .= $value;
-			if (
-					isset( $value )
-				&&	$value != "."
-				&&	( $value != ".." || $allowParentLink )
-				&&	!is_file( $value )
-				&&	$value != MAIN_FOLDER_NAME
-				&&	$value != "xampp"
-				&&	$value != "mampp"
-				&&	$value != "lampp"
-				&&	$value != "wampp"
-				&&	$value != "dashboard"
-				&&	$value != "lampp"
-				&&	$value != "mampp"
-				&&	$value != "webalizer"
-				&&	$value != "img"
-				&&	$value != "js"
-				&&	$value != "image"
-				&&	$value != "cache"
-				&&	( $realpath != "xampphtdocs" || $value != "dashboard" )
-				&&	( $realpath != "xampphtdocs" || $value != "forbidden" )
-				&&	( $realpath != "xampphtdocs" || $value != "restricted" )
-				&&	( $realpath != "xampphtdocs" || $value != "xampp" )
-				)
+			if ( $this->isValidFolderName( $value, $allowParentLink ) )
 			{
 				$siteList[$key]["name"] = $value;
 				if ( SCAN_DIR != "./" )
@@ -344,6 +321,39 @@ class FrontController extends Controller
 		fwrite($myfile, $txt);
 		fclose($myfile);
 		header("Refresh:0");
+	}
+
+	public function isValidFolderName( $folderName = null, $allowParentLink = false )
+	{
+		$realpath = str_replace( array('/', '\\'), '', explode( ":",realpath('.') )[0] );
+		if (
+			isset( $folderName )
+			&&	$folderName != null
+			&&	$folderName != "."
+			&&	( $folderName != ".." || $allowParentLink )
+			&&	!is_file( $folderName )
+			&&	$folderName != MAIN_FOLDER_NAME
+			&&	$folderName != "xampp"
+			&&	$folderName != "mampp"
+			&&	$folderName != "lampp"
+			&&	$folderName != "wampp"
+			&&	$folderName != "dashboard"
+			&&	$folderName != "lampp"
+			&&	$folderName != "mampp"
+			&&	$folderName != "webalizer"
+			&&	$folderName != "img"
+			&&	$folderName != "js"
+			&&	$folderName != "image"
+			&&	$folderName != "cache"
+			&&	( $realpath != "xampphtdocs" || $folderName != "dashboard" )
+			&&	( $realpath != "xampphtdocs" || $folderName != "forbidden" )
+			&&	( $realpath != "xampphtdocs" || $folderName != "restricted" )
+			&&	( $realpath != "xampphtdocs" || $folderName != "xampp" )
+			)
+		{
+			return true;
+		}
+		return false;
 	}
 }
 ?>
