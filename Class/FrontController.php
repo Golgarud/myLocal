@@ -220,24 +220,7 @@ class FrontController extends Controller
 					{
 						$siteList[$key]["link"] = $conffGitSplit["url"];
 						$isSSH = explode( "@", $siteList[$key]["link"] );
-						
-						if ( isset( explode( "github", $siteList[$key]["link"] )[1] ) )
-						{
-							$siteList[$key]["linkType"] = "github";
-						}
-						elseif ( isset( explode( "bitbucket", $siteList[$key]["link"] )[1] ) )
-						{
-							$siteList[$key]["linkType"] = "bitbucket";
-						}
-						elseif ( isset( explode( "gitlab", $siteList[$key]["link"] )[1] ) )
-						{
-							$siteList[$key]["linkType"] = "gitlab";
-						}
-						else
-						{
-							$siteList[$key]["linkType"] = "git";
-						}
-
+						$siteList[$key]["linkType"] = $this->getLinkType( $siteList[$key]["link"] );
 						if ( isset( $isSSH[1] ) )
 						{
 							$siteList[$key]["link"] = $isSSH[1];
@@ -354,6 +337,23 @@ class FrontController extends Controller
 			return true;
 		}
 		return false;
+	}
+
+	public function getLinkType( $siteLink )
+	{
+		if ( isset( explode( "github", $siteLink )[1] ) )
+		{
+			return "github";
+		}
+		elseif ( isset( explode( "bitbucket", $siteLink )[1] ) )
+		{
+			return "bitbucket";
+		}
+		elseif ( isset( explode( "gitlab", $siteLink )[1] ) )
+		{
+			return "gitlab";
+		}
+		return "git";
 	}
 }
 ?>
