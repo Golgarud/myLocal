@@ -41,7 +41,7 @@ Required [Gulp](https://www.npmjs.com/package/gulp-install) for any update.
 MyLocal use [gulp-oyana](https://github.com/Oyana/gulp-oyana) for asset compiling.
 
 
-## Build status ![v 0.5.0](https://img.shields.io/badge/version-0.4.2_alpha-blue.svg)
+## Build status ![v 0.6.0](https://img.shields.io/badge/version-0.6.0_alpha-blue.svg)
 
 | Linux | Windows | Mac | PHP |
 |:------:|:----------:|:----:|:----:|

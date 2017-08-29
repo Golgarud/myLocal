@@ -6,7 +6,8 @@
 			localHost sweet localHost
 		</li>
 		<li><a class="upload-btn" href="#uploadImg">upload myLocal image</a></li>
-		<li><a href="./#conff">Config myLocal</a></li>
+		<li><a href="{$url.root_url}/tools/config.php">Config myLocal (new)</a></li>
+		<li><a href="./#conff">Config myLocal (legacy)</a></li>
 		<li><a href="../phpmyadmin/">PhpMyAdmin</a></li>
 		<li><a href="{$url.root_url}/tools/phpinfo.php">PHP info</a></li>
 		<li><a href="{$url.root_url}/tools/clearCookie.php">clear cookie</a></li>

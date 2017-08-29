@@ -1,4 +1,4 @@
-<form method="post" enctype="multipart/form-data" action="">
+<form method="post" enctype="multipart/form-data" action="{$url.root_url}/tools/imageUploader.php">
 	<ul class="site-l">
 	{foreach from=$datas item=data key=key}
 		{* circle *}
